@@ -25,14 +25,19 @@ public class UserDaoImp implements UserDao{
         entityManager.persist(user);
     }
 
+
     @Override
-    public void changeUser(long id, User updatedUser) {
-        User userToUpdate = getUserById(id);
-        userToUpdate.setUsername(updatedUser.getUsername());
-        userToUpdate.setPassword(new BCryptPasswordEncoder().encode(updatedUser.getPassword()));
-        userToUpdate.setEmail(updatedUser.getEmail());
-        entityManager.merge(userToUpdate);
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
+//    @Override
+//    public void changeUser(long id, User updatedUser) {
+//        User userToUpdate = getUserById(id);
+//        userToUpdate.setUsername(updatedUser.getUsername());
+//        userToUpdate.setPassword(new BCryptPasswordEncoder().encode(updatedUser.getPassword()));
+//        userToUpdate.setEmail(updatedUser.getEmail());
+//        entityManager.merge(userToUpdate);
+//    }
 
     @Override
     public void deleteUser(long id) {
